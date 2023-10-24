@@ -9,12 +9,12 @@ def start_game(num):
     print("Welcome to the Guessing Game")
     ans = 0
     count = 1
-    highscore = 4000
+    highscore = 10
     while ans != num:
-        ans = input("Please guess a number from 1 to 4000:  ")
+        ans = input("Please guess a number from 1 to 10:  ")
         try:
             ans = int(ans)
-            if ans < 1 or ans > 4000:
+            if ans < 1 or ans > 10:
                 raise ValueError(f"{ans} is outside the range of numbers")
         except ValueError as err:
             print(f"Oh no, we ran into an issue ({err}), please try again")
@@ -31,8 +31,10 @@ def start_game(num):
                     print(f"New highscore: {highscore} attempts!")
                 working = input(f"Would you like to play again?  (Y)es/(N)o   ")
                 if working.lower() in "yes":
-                    num = random.randint(1,4000)
+                    print(f"Great, remember, the high score to beat is {highscore}!")
+                    num = random.randint(1,10)
                     count = 0
+
                 else:
                     print("Thanks for playing!!")
 
@@ -42,4 +44,5 @@ def start_game(num):
 
 
 
-start_game(random.randint(1,4000))
+start_game(random.randint(1,10))
+
